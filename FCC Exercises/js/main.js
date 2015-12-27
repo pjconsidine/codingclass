@@ -9,6 +9,7 @@ $(function myReplace(str, before, after) {
 
 //	Array.splice()
 
-//	String.replace()
+//	String.replace()  
+//	str.replace(regexp|substr, newSubStr|function[, flags])
 
 //	Array.join()
