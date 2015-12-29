@@ -1,26 +1,43 @@
 <!DOCTYPE html>
-<html>
-<head>
-<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Learning...always learning">
+    <meta name="author" content="Pete Considine, SevenLetters, Inc.">
+
     <title>SevenLetters, Inc.</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="description" content="A journey of a thousand miles begins with a single step." />
-    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-</head>
+
+    <script src="js/handlebars.min.js"></script>
+	<script src="handlebars-intl/dist/handlebars-intl.min.js"></script>
+
+  </head>
 
 <body>
-<h1 class="testPanel">Test Panel</h1>
+	<h1 class="page-header">Handlebars Header</h1>
+	<p class="lead">This is where the Handlebars template starts</p>
+	<script id="HBtemplate" type="text/x-handlebars-template">
+		<p>{{ country }}</p>
+		<p>{{ user.first_name }} {{ user.last_name }}</p>
+		<p>{{ user.email}}</p>
+	</script>
+	<p>This is where the Handlebars template ends.</p>
 
-	<h2 class="testText"> Test Text</h2>
-		
-		<p>Paragraph text.</p>
+	<div class="jumbotron">
+		<h3 id="scriptText">This is some text.</h3>
+		<button type="button" class="btn btn-inline btn-danger">Change Text</button>
+	</div>
 
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+ 
 </body>
 
 </html>

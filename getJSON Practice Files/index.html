@@ -1,22 +1,39 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Learning...always learning">
+    <meta name="author" content="Pete Considine, SevenLetters, Inc.">
 
-<html>
+    <title>SevenLetters, Inc.</title>
 
-<head>
-	<title>getJSON Practice File</title>
-    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-</head>
 
-<body>
-<h1 class="testPanel">getJSON Practice File</h1>
+  </head>
 
-	<h2>Test Text</h2>
-		
-		<p class="testText">Paragraph text.</p>
+<body class="container-fluid">
+	<h1 class="page-header">International User Database</h1>
+	<p class="lead">Enter a country to find which of our users live there.</p>
+	<div class="col-md-12"><input type="text" id="userCountry" placeholder="enter a country"> </input><button type="submit" name="submit" id="submit">Submit</button></div><br />
+	
+	<script id="HBtemplate" type="text/x-handlebars-template">
+		<ul class="small">{{#each users.newData}}  <li>{{country}}: {{user.first_name}} {{user.last_name}}, {{user.email}}</li> {{/each}}</ul>
+	</script>
 
+	<div class="jumbotron">
+		<h3 id="scriptText"></h3>
+	</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/handlebars.min.js"></script>
+    <script src="js/main.js"></script>
+ 
 </body>
 
 </html>
