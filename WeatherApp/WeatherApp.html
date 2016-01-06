@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="Learning...always learning">
+		<meta name="author" content="Pete Considine, SevenLetters, Inc.">
+
+		<title>SevenLetters, Inc.</title>
+
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+	</head>
+
+	<body>
+		<div class="container">
+			<h2>This is a weather app</h2>
+			<br />
+			<p id="results-text">This is where the results will go if there ever are any.</p>
+		</div> <!-- end container -->
+
+		<script type="text/javascript">
+			function loadXMLDoc() {
+				var xmlhttp;
+
+				if (window.XMLHttpRequest) {
+					// code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp = new XMLHttpRequest();
+				} else {
+					// code for IE6, IE5
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+					   if(xmlhttp.status == 200){
+						   document.getElementById("results-text").innerHTML = xmlhttp.responseText;
+					   }
+					   else if(xmlhttp.status == 400) {
+						  alert('There was an error 400')
+					   }
+					   else {
+						   alert('something other than 200 was returned')
+					   }
+					}
+				}
+
+				xmlhttp.open("GET", "http://api.weatherunlocked.com/api/current/47.6358,-122.3438?app_id=8c4697ce&app_key=1dde4656844165ba667bfa947879e958", true);
+				xmlhttp.send();
+			}
+			
+			loadXMLDoc();
+		</script>
+	 
+	</body>
+
+</html>

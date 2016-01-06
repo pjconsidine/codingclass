@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<?xml-stylesheet href="latest_ob.xsl" type="text/xsl"?>
+<current_observation version="1.0"
+	 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:noNamespaceSchemaLocation="http://www.weather.gov/view/current_observation.xsd">
+	<credit>NOAA's National Weather Service</credit>
+	<credit_URL>http://weather.gov/</credit_URL>
+	<image>
+		<url>http://weather.gov/images/xml_logo.gif</url>
+		<title>NOAA's National Weather Service</title>
+		<link>http://weather.gov</link>
+	</image>
+	<suggested_pickup>15 minutes after the hour</suggested_pickup>
+	<suggested_pickup_period>60</suggested_pickup_period>
+	<location>Pagosa Springs, Wolf Creek Pass, CO</location>
+	<station_id>KCPW</station_id>
+	<latitude>37.45139</latitude>
+	<longitude>-106.80028</longitude>
+	<observation_time>Last Updated on Dec 14 2015, 10:56 am MST</observation_time>
+        <observation_time_rfc822>Mon, 14 Dec 2015 10:56:00 -0700</observation_time_rfc822>
+	<weather>Heavy Snow and Breezy</weather>
+	<temperature_string>14.0 F (-10.0 C)</temperature_string>
+	<temp_f>14.0</temp_f>
+	<temp_c>-10.0</temp_c>
+	<relative_humidity>92</relative_humidity>
+	<wind_string>from the Southwest at 21.9 gusting to 47.2 MPH (19 gusting to 41 KT)</wind_string>
+	<wind_dir>Southwest</wind_dir>
+	<wind_degrees>220</wind_degrees>
+	<wind_mph>21.9</wind_mph>
+	<wind_gust_mph>47.2</wind_gust_mph>
+	<wind_kt>19</wind_kt>
+	<wind_gust_kt>41</wind_gust_kt>
+	<pressure_in>29.62</pressure_in>
+	<dewpoint_string>12.2 F (-11.0 C)</dewpoint_string>
+	<dewpoint_f>12.2</dewpoint_f>
+	<dewpoint_c>-11.0</dewpoint_c>
+	<windchill_string>-4 F (-20 C)</windchill_string>
+      	<windchill_f>-4</windchill_f>
+      	<windchill_c>-20</windchill_c>
+	<visibility_mi>0.25</visibility_mi>
+	<two_day_history_url>http://www.weather.gov/data/obhistory/KCPW.html</two_day_history_url>
+	<ob_url>http://www.weather.gov/data/METAR/KCPW.1.txt</ob_url>
+	<disclaimer_url>http://weather.gov/disclaimer.html</disclaimer_url>
+	<copyright_url>http://weather.gov/disclaimer.html</copyright_url>
+	<privacy_policy_url>http://weather.gov/notice.html</privacy_policy_url>
+</current_observation>

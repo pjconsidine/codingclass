@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="Learning...always learning">
+		<meta name="author" content="Pete Considine, SevenLetters, Inc.">
+
+		<title>SevenLetters, Inc.</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" >
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	</head>
+
+	<body class="container-fluid">
+		<h1 class="page-header">Weather Station <small>Enter a city and state, or a ZIP code</small></h1>
+		<form role="form">
+			<div class="form-group form-inline">
+				<label for="city">City:&nbsp;</label><input type="city" class="form-control" id="city" />
+				<label for="state">and State:&nbsp;</label><input type="state" class="form-control" id="state" />
+				<label for="ZIP">or ZIP code:&nbsp;</label><input type="ZIP" class="form-control" id="ZIP" />
+				<button type="submit" class="btn btn-primary" onclick="loadXMLDoc()">Submit</button>
+			</div>
+			<div class="form-group form-inline">
+				<div class="col-md-12 text-center">
+					<h4>
+						<label class="radio-inline">
+							<input type="radio" name="forecastOption" id="current" value="current" checked /> Current weather
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="forecastOption" id="forecast" value="forecast" /> 7 Day Forecast
+						</label>
+					</h4>
+				</div>
+			</div>
+		</form>
+
+
+		<script id="HBtemplate" type="text/x-handlebars-template">
+		</script>
+
+		<p id = "results-text"> Results Text </p>
+		
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/handlebars.min.js"></script>
+		<script src="js/main.js"></script>
+
+	</body>
+
+</html>
