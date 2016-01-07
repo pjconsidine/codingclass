@@ -6,4 +6,13 @@ li {
 	line-height: 1.75em;
 }
 
+input {
+	margin: auto .75em;
+}
+
+.row {
+	margin: 1em auto;
+}
+
+
  
