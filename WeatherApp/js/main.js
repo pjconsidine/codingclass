@@ -1,34 +1,50 @@
-$(function() {
-	$(window).load(function() {
-		
-		var Connect = new XMLHttpRequest();
-		Connect.open("GET", "./all_xml/42S39.xml", false);
-		Connect.setRequestHeader("Content-Type", "text/xml");
-		Connect.send(null);
-		
-		var Response = Connect.responseXML;
-		var MainEntries = Response.childNodes[1];
-		var SubEntries = MainEntries.childNodes;
-		// var tempF = SubEntries[21].innerHTML;
-		// var tempC = SubEntries[23].innerHTML;
-				
-		if (SubEntries.length > 0) {
-			ProcessEntries(SubEntries);
+(function($) {
+	$.ajax({
+		type: "GET",
+		url: "https://ip-api.com/json",
+		async: false,
+		contentType: "application/json",
+		dataType: "jsonp",
+		success: function(data) {
+			var lat = data.lat;
+			var lon = data.lon;
+			console.log(lat + ", " + lon);
+		},
+		error: function(error) {
+			$("#result-text").html("Location not found:" + error);
 		}
-		
-		$("#result-text").html(MenuData);
-
 	});
-	
-	var MenuData = "<table class='table'><thead><tr><th>Node Name</th><th>Node Value</th></tr></thead>";
-	
-	function ProcessEntries(Nodes) {
-		for (var i = 1; i < Nodes.length; i+=2) {
-			var ThisNode = Nodes[i];
-			MenuData += "<tbody>";
-			MenuData += "<tr><td>" + ThisNode.nodeName + "</td><td>" + ThisNode.innerHTML + "</td></tr>";
-			MenuData += "</tbody>";
+})(jQuery);
+
+(function($) {
+	var url = 'https://api.forecast.io/forecast/795262f49355bceab3dbfbe52121e3b6/0,0';
+	$.ajax({
+		type: 'GET',
+		url: url,
+		async: false,
+		contentType: "application/json",
+		dataType: 'jsonp',
+		success: function(results) {
+			var data = results;
+			ProcessEntries(data.currently);
+			ProcessEntries(data.daily);
 		}
-		MenuData += "</table>";
+	});
+})(jQuery);
+
+var MenuData = "<table class='table'><thead><tr><th>Property Name</th><th>Property Value</th></tr></thead>";
+	
+function ProcessEntries(results) {
+	var Keys = Object.keys(results);
+	
+	for (var i = 0; i < Keys.length; i++) {
+		var thisProperty = Keys[i];
+		var thisPropertyValue = results[thisProperty];
+		MenuData += "<tbody>";
+		MenuData += "<tr><td>" + thisProperty + "</td><td>" + thisPropertyValue + "</td></tr>";
+		MenuData += "</tbody>";
 	}
-});
+	MenuData += "</table>";
+	
+	$("#result-text").html(MenuData);
+}
