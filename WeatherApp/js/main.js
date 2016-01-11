@@ -1,23 +1,5 @@
 (function($) {
-	$.ajax({
-		type: "GET",
-		url: "https://ip-api.com/json",
-		async: false,
-		contentType: "application/json",
-		dataType: "jsonp",
-		success: function(data) {
-			var lat = data.lat;
-			var lon = data.lon;
-			console.log(lat + ", " + lon);
-		},
-		error: function(error) {
-			$("#result-text").html("Location not found:" + error);
-		}
-	});
-})(jQuery);
-
-(function($) {
-	var url = 'https://api.forecast.io/forecast/795262f49355bceab3dbfbe52121e3b6/0,0';
+	var url = 'https://api.forecast.io/forecast/795262f49355bceab3dbfbe52121e3b6/10,180';
 	$.ajax({
 		type: 'GET',
 		url: url,
@@ -26,25 +8,37 @@
 		dataType: 'jsonp',
 		success: function(results) {
 			var data = results;
-			ProcessEntries(data.currently);
-			ProcessEntries(data.daily);
+			ProcessEntries(data);
 		}
 	});
 })(jQuery);
 
-var MenuData = "<table class='table'><thead><tr><th>Property Name</th><th>Property Value</th></tr></thead>";
+
+function ProcessEntries(data) {
+	Handlebars.registerHelper("formatDateTime", function(time) {
+		var timestampValue = parseInt((time),10);
+		var dt = new Date(timestampValue*1000);
+		var hours = (dt.getHours() + 24) % 12 || 12;
+		var meridien = function (){
+			if (dt.getHours() > 12) {
+				return "PM";
+			} else {
+				return "AM";
+			}
+		}
+		return (dt.getMonth()+1) + '/' + dt.getDate() + '/' + dt.getFullYear() + ", " + hours + ":" + String("0" + dt.getMinutes()).slice(-2) + " " + meridien();
+	});
 	
-function ProcessEntries(results) {
-	var Keys = Object.keys(results);
+	Handlebars.registerHelper("formatTemp", function(temp) {
+		var tempF = Math.round(temp * 10) / 10;
+		var tempC = Math.round((temp - 32) * (5/9) * 10) /10;
+		return tempF + "&deg;F / " + tempC + "&deg;C";
+	});
 	
-	for (var i = 0; i < Keys.length; i++) {
-		var thisProperty = Keys[i];
-		var thisPropertyValue = results[thisProperty];
-		MenuData += "<tbody>";
-		MenuData += "<tr><td>" + thisProperty + "</td><td>" + thisPropertyValue + "</td></tr>";
-		MenuData += "</tbody>";
-	}
-	MenuData += "</table>";
-	
-	$("#result-text").html(MenuData);
+	var source1 = $("#currentTemplate").html();
+	var template1 = Handlebars.compile(source1);
+
+	var source2 = $("#forecastTemplate").html();
+	var template2 = Handlebars.compile(source2);
+	$("#result-text").append(template2(data.hourly));
 }

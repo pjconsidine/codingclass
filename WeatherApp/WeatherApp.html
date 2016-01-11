@@ -18,32 +18,71 @@
 	<body>
 		<div class="container">
 			<h1 class="page-header">Weather Station <small>Enter a city and state, or a ZIP code</small></h1>
-			<form role="form">
-				<div class="form-group form-inline">
+			<form role="form" class="well form-inline">
+				<div class="form-group">
 					<div class="row" id="location-form">
-						<label for="city">City:&nbsp;</label>
+						<label for="city" class="control-label">City:&nbsp;</label>
 						<input type="city" class="form-control" id="city" />
-						<label for="state"> State:&nbsp;</label>
+						<label for="state" class="control-label"> State:&nbsp;</label>
 						<input type="state" class="form-control" id="state" /> 
 						<h4>or</h4>
 					</div>
 					<div class="row">	
-						<label for="ZIP">ZIP code:&nbsp;</label>
+						<label for="ZIP" class="control-label">ZIP code:&nbsp;</label>
 						<input type="ZIP" class="form-control" id="ZIP" />
-						<button type="submit" class="btn btn-primary" id="submit" >Submit</button>
 					</div>
-				</div> 
-				<div class="clear-fix"><hr /></div>
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="checkbox"><input type="checkbox"> Current Conditions</label>
+							<label class="checkbox"><input type="checkbox"> Hourly Forecast</label>  
+							<label class="checkbox"><input type="checkbox"> 8-Day Forecast</label>
+							<button class="btn btn-primary" id="submit">Submit</button>
+						</div>
+					</div>
+				</div>
 			</form>
 
-			<p id="result-text">This is where the results will go if there ever are any.</p>
-			
-<!--			<p><i class="fa fa-spinner fa-5x fa-spin"></i></p> -->
+			<div class="well" id="result-text">
+			</div>
+
+			<script id="currentTemplate" type="text/x-handlebars-template">
+				<table class='table'>
+					<thead>
+						<tr><th>Current Conditions</th><th></th></tr>
+					</thead>
+					<tbody>
+						<tr><td>{{formatDateTime time}}</td><td>{{summary}}</td><td>{{{formatTemp temperature}}}</td></tr>
+					</tbody>
+				</table>
+			</script>
+
+			<script id="forecastTemplate" type="text/x-handlebars-template">
+				<table class='table'>
+					<thead>
+						{{#if data.temperatureMin}}
+							<tr><th>Forecast</th><th></th><th>Low</th><th>High</th></tr>
+						{{else}}
+							<tr><th>Forecast</th><th></th><th>Temp</th><th></th></tr>
+						{{/if}}
+					</thead>
+					<tbody>
+						{{#each data}}
+						<tr><td>{{formatDateTime time}}</td><td>{{summary}}</td>
+							{{#if temperatureMin}}
+								<td>{{{formatTemp temperatureMin}}}</td><td>{{{formatTemp temperatureMax}}}</tr>
+							{{else}}
+								<td>{{{formatTemp temperature}}}</td></tr>
+							{{/if}}
+						{{/each}}
+					</tbody>
+				</table>
+			</script>
 
 		</div> <!-- end container -->
 
 		<script src="./js/jquery.min.js"></script>
 		<script src="./js/bootstrap.min.js"></script>
+	    <script src="./js/handlebars.min.js"></script>
 		<script src="./js/main.js"></script>
 		
 	</body>
