@@ -1,18 +1,26 @@
+var lat, lon, Position;
+
+Position = "10,10";
+
+var url = "https://api.forecast.io/forecast/795262f49355bceab3dbfbe52121e3b6/" + Position;
+
+console.log(url);
+
 (function($) {
-	var url = 'https://api.forecast.io/forecast/795262f49355bceab3dbfbe52121e3b6/10,180';
 	$.ajax({
 		type: 'GET',
 		url: url,
-		async: false,
+		async: true,
 		contentType: "application/json",
 		dataType: 'jsonp',
 		success: function(results) {
 			var data = results;
-			ProcessEntries(data);
+			$("#submit").click(function(){
+				ProcessEntries(data);
+			});
 		}
 	});
 })(jQuery);
-
 
 function ProcessEntries(data) {
 	Handlebars.registerHelper("formatDateTime", function(time) {
@@ -40,5 +48,5 @@ function ProcessEntries(data) {
 
 	var source2 = $("#forecastTemplate").html();
 	var template2 = Handlebars.compile(source2);
-	$("#result-text").append(template2(data.hourly));
+	$("#result-text").html(template2(data.daily));
 }
