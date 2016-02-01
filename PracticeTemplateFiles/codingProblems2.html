@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Coding Problems</title>
+
+</head>
+<body>
+
+	<h3 id="result-text">Result Text</h3>
+
+<script type="text/javascript">
+
+function sumPrimes(num) {
+	var Primes = [2,3];
+	
+	function testPrimes(v1, v2) {
+		var a = v1/v2;
+		if (Math.floor(a % v1) === (a % v1)) {
+			isPrime = false;
+		}
+	}
+
+	switch(num) {
+		case 0:
+			return "undefined";
+		case 1:
+			return 1;
+		case 2:
+			return 3;
+		case 3: 
+			return 6;
+		default:
+			for (var i = 4; i <= num; i++) {	
+				var isPrime = true;
+				Primes.forEach(testPrimes());
+				if (isPrime === true) {
+					Primes.push(i);
+				}
+			}
+		return Primes.reduce(function(prev, currVal){
+			return prev + currVal;
+		});
+	}
+}
+
+sumPrimes(10);
+
+document.getElementById("result-text").innerHTML=(sumPrimes(10));
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Coding Problems</title>
+
+</head>
+<body>
+
+	<h3 id="result-text">Result Text</h3>
+
+<script type="text/javascript">
+
+function add(arguments) {
+/* Create a function that sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum. */
+  arguments.forEach(function(element){
+	if (element === NaN) {
+	  return undefined;
+	}
+  });
+
+  if (arguments.length > 1) {
+	return arguments.reduce(function(prev,curr){
+		return prev + curr;
+	});
+  } else {
+  
+  }
+
+}
+
+document.getElementById("result-text").innerHTML=();
+
+</script>
+</body>
+
+</html>
