@@ -17,13 +17,6 @@
 function sumPrimes(num) {
 	var Primes = [2,3];
 	
-	function testPrimes(v1, v2) {
-		var a = v1/v2;
-		if (Math.floor(a % v1) === (a % v1)) {
-			isPrime = false;
-		}
-	}
-
 	switch(num) {
 		case 0:
 			return "undefined";
@@ -36,7 +29,13 @@ function sumPrimes(num) {
 		default:
 			for (var i = 4; i <= num; i++) {	
 				var isPrime = true;
-				Primes.forEach(testPrimes());
+				Primes.forEach(function(element) {
+					var a = i/element;
+					if (Math.floor(a % element) === (a % element)) {
+						isPrime = false;
+					}
+				});
+
 				if (isPrime === true) {
 					Primes.push(i);
 				}
@@ -47,9 +46,12 @@ function sumPrimes(num) {
 	}
 }
 
-sumPrimes(10);
+(function() {
+	var num = prompt("Enter a number");
+	var sum = sumPrimes(num);
+	document.getElementById("result-text").innerHTML=("The sum of all prime numbers less than or equal to "+num+" is "+sum+".");
+})();
 
-document.getElementById("result-text").innerHTML=(sumPrimes(10));
 
 </script>
 </body>

@@ -9,30 +9,29 @@
 
 </head>
 <body>
-
+	<h2>Fun With Code</h2>
 	<h3 id="result-text">Result Text</h3>
 
+	
 <script type="text/javascript">
-
-function add(arguments) {
-/* Create a function that sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum. */
-  arguments.forEach(function(element){
-	if (element === NaN) {
-	  return undefined;
-	}
-  });
-
-  if (arguments.length > 1) {
-	return arguments.reduce(function(prev,curr){
-		return prev + curr;
-	});
-  } else {
-  
-  }
-
+function telephoneCheck(str) {
+  console.log(/[\(\)]/g.test(str));
+  console.log(/[\(\)].+[\(\)]/g.test(str));
+  console.log(/[\(\)]\B.+\B[\(\)]/g.test(str));
+	
+	var num = str.match(/[0-9]/g); 
+		if (num.length < 10) {
+			return false;
+		} else if (num.length === 11 && num[0] !== "1") {
+			return false;
+		} else if (num.length > 11) {
+			return false;
+		} else {
+			return true;
+	}	
 }
 
-document.getElementById("result-text").innerHTML=();
+document.getElementById("result-text").innerHTML=(telephoneCheck("555)-555-5555"));
 
 </script>
 </body>
